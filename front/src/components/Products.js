@@ -12,12 +12,13 @@ const Products = () => {
     
       
  
-    const getProducts = async () => {
+    const getProducts = async (type=0) => {
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
-        await fetch(BASEURL + `get-featured-products/`, {
+        await fetch(BASEURL + `get-products/`, {
           method: "POST",
-          headers: myHeaders,         
+          headers: myHeaders,       
+          body: JSON.stringify({type})  
         })
           .then((response) => response.json())
           .then((res) => {
@@ -31,77 +32,20 @@ const Products = () => {
     
       
     };
+
+    const sortproduct = (type) =>{
+        getProducts(type)
+    }
    
   return (
     <>
-         <div className="ps-breadcrumb">
-        <div className="ps-container">
-            <ul className="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li>Products</li>
-            </ul>
-        </div>
-    </div>
+  
     <div className="ps-page--shop" id="shop-sidebar">
         <div className="ps-container">
             <div className="ps-layout--shop">
                 <div className="ps-layout__left">
+                    
                     <aside className="widget widget_shop">
-                        <h4 className="widget-title">Products</h4>
-                        
-                    </aside>
-                    <aside className="widget widget_shop">
-                        <h4 className="widget-title">BY BRANDS</h4>
-                        <form className="ps-form--widget-search" action="https://nouthemes.net/html/martfury/do_action" method="get">
-                            <input className="form-control" type="text" placeholder=""/>
-                            <button><i className="icon-magnifier"></i></button>
-                        </form>
-                        <figure className="ps-custom-scrollbar" data-height="250">
-                            <div className="ps-checkbox">
-                                <input className="form-control" type="checkbox" id="brand-1" name="brand" />
-                                <label for="brand-1">Adidas (3)</label>
-                            </div>
-                            <div className="ps-checkbox">
-                                <input className="form-control" type="checkbox" id="brand-2" name="brand" />
-                                <label for="brand-2">Amcrest (1)</label>
-                            </div>
-                            <div className="ps-checkbox">
-                                <input className="form-control" type="checkbox" id="brand-3" name="brand" />
-                                <label for="brand-3">Apple (2)</label>
-                            </div>
-                            <div className="ps-checkbox">
-                                <input className="form-control" type="checkbox" id="brand-4" name="brand" />
-                                <label for="brand-4">Asus (19)</label>
-                            </div>
-                            <div className="ps-checkbox">
-                                <input className="form-control" type="checkbox" id="brand-5" name="brand" />
-                                <label for="brand-5">Baxtex (20)</label>
-                            </div>
-                            <div className="ps-checkbox">
-                                <input className="form-control" type="checkbox" id="brand-6" name="brand" />
-                                <label for="brand-6">Adidas (11)</label>
-                            </div>
-                            <div className="ps-checkbox">
-                                <input className="form-control" type="checkbox" id="brand-7" name="brand" />
-                                <label for="brand-7">Casio (9)</label>
-                            </div>
-                            <div className="ps-checkbox">
-                                <input className="form-control" type="checkbox" id="brand-8" name="brand" />
-                                <label for="brand-8">Electrolux (0)</label>
-                            </div>
-                            <div className="ps-checkbox">
-                                <input className="form-control" type="checkbox" id="brand-9" name="brand" />
-                                <label for="brand-9">Gallaxy (0)</label>
-                            </div>
-                            <div className="ps-checkbox">
-                                <input className="form-control" type="checkbox" id="brand-10" name="brand" />
-                                <label for="brand-10">Samsung (0)</label>
-                            </div>
-                            <div className="ps-checkbox">
-                                <input className="form-control" type="checkbox" id="brand-11" name="brand" />
-                                <label for="brand-11">Sony (0)</label>
-                            </div>
-                        </figure>
                         <figure>
                             <h4 className="widget-title">By Price</h4>
                             <div id="nonlinear"></div>
@@ -174,22 +118,22 @@ const Products = () => {
                     
                     <div className="ps-shopping ps-tab-root">
                         <div className="ps-shopping__header">
-                            <p><strong> 36</strong> Products found</p>
-                            <div className="ps-shopping__actions">
-                                <select className="ps-select" data-placeholder="Sort Items">
-                                    <option>Sort by latest</option>
-                                    <option>Sort by popularity</option>
-                                    <option>Sort by average rating</option>
-                                    <option>Sort by price: low to high</option>
-                                    <option>Sort by price: high to low</option>
+                            <p><strong> {product && product.length}</strong> Products found</p>
+                            <div className="ps-shopping__actionsq">
+                                <select className="form-control" onChange={(e)=>sortproduct(e.target.value)}>
+                                    <option value={0}>Sort by latest</option>
+                                    {/* <option value={1}>Sort by popularity</option>
+                                    <option value={2}>Sort by average rating</option> */}
+                                    <option value={1}>Sort by price: low to high</option>
+                                    <option value={2}>Sort by price: high to low</option>
                                 </select>
-                                <div className="ps-shopping__view">
+                                {/* <div className="ps-shopping__view">
                                     <p>View</p>
                                     <ul className="ps-tab-list">
                                         <li className="active"><a href="#tab-1"><i className="icon-grid"></i></a></li>
                                         <li><a href="#tab-2"><i className="icon-list4"></i></a></li>
                                     </ul>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                         <div className="ps-tabs">

@@ -97,21 +97,18 @@ const ProductDetails = () => {
                         </div>
                         <div className="ps-product__content ps-tab-root">
                             <ul className="ps-tab-list">
-                               {data&&data[0].description!=="" && <li onClick={()=>setTab(1)} className="active"><a href="#tab-1">Description</a></li> 
+                               {data&&data[0].desc!=="" && <li onClick={()=>setTab(1)} className="active"><a href="#tab-1">Description</a></li> 
                                 }                               
                             </ul>
                             <div className="ps-tabs">
                                 { Tab === 1 ?
                                 <div className="ps-tab active">
-                                    <div className="ps-document" dangerouslySetInnerHTML={{__html: data&&data[0].description!=="" ? data[0].description : null  }} >
+                                    <div className="ps-document" dangerouslySetInnerHTML={{__html: data&&data[0].desc!=="" ? data[0].desc : null  }} >
                                         
                                     </div>
                                 </div>
                                 : 
-                                <div className="ps-tab active">
-                                
-                                    {data && data[0].ingredients!=="" ? data[0].ingredients : null  }
-                                </div>
+                                null
                                 }
                                
                             </div>

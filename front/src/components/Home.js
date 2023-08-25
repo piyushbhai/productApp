@@ -45,13 +45,13 @@ const Home = () => {
             <div className="ps-container">
                 <div className="ps-section__left">              
             <Carousel showThumbs={false} autoPlay={true}>
-                <img src={'img/slider/home-1/SLIDER_BORA_BORA.png'} alt="" />
-                    <img src={'img/slider/home-1/SLIDER_ORANGE_MANDARIN.png'} alt="" />
+                {/* <img src={'img/slider/mobile-tech-banner-template_23-2148818626.jpg'} alt="" /> */}
+                    <img src={'img/slider/horizontal-website-banne_451189-110.jpg'} alt="" />
             </Carousel>
                                 
                 </div>
                 <div className="ps-section__right">
-                <a className="ps-collection" href="#"><img src="img/slider/home-1/promotion-1.jpg" style={{height:"220px"}} alt=""/></a>
+                <a className="ps-collection" href="#"><img src="img/slider/ promotion-1.jpg" style={{height:"220px"}} alt=""/></a>
                 <a className="ps-collection" href="#"><img src="img/slider/home-1/promotion-2.jpg" style={{height:"220px"}} alt=""/></a>
                 </div>
             </div>
@@ -115,19 +115,6 @@ const Home = () => {
             </div>
         </div>
         
-        <div className="ps-container ps-best-sale-brands ps-section--furniture">
-                <div className="ps-section__header text-center pb-2">
-                    <img src="/img/pages/home/insta-spacer2.jpg" alt=""/>
-                </div>
-                <div className="ps-section__content">
-                    <ul className="ps-image-list">
-                        <li><a href="#"><img src="img/pages/home/activeapricot_instagram.jpg" alt=""/></a></li>
-                        <li><a href="#"><img src="img/pages/home/diamondpower_instagram.jpg" alt=""/></a></li>
-                        <li><a href="#"><img src="img/pages/home/hydr-orange_Instagram.jpg" alt=""/></a></li>
-                        <li><a href="#"><img src="img/pages/home/activeapricot_instagram.jpg" alt=""/></a></li>                       
-                    </ul>
-                </div>
-            </div>
       
           </div>
 
