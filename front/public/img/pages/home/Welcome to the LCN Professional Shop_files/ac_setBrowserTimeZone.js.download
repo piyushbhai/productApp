@@ -1,0 +1,36 @@
+﻿function setBrowserTimeZone() {
+
+  var BrowserTimeZone = localStorage.getItem("BrowserTimeZone");
+  var HasSetSessionBrowserTimeZone = sessionStorage.getItem("HasSetSessionBrowserTimeZone");
+
+  var timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
+
+  // Throw out bad values
+  if (timeZone === undefined || timeZone === null || timeZone === "") return;
+
+  // Always set timezone at beginning of session or when timezone changes
+  if (!HasSetSessionBrowserTimeZone || timeZone !== BrowserTimeZone) {
+    $.ajax({
+      type: "POST",
+      contentType: "application/json; charset=utf-8",
+      data: JSON.stringify({ timeZone: timeZone }),
+      url: "/store/Ajax/Ajaxhandler.aspx/SetSessionBrowserTimeZone",
+      dataType: "json"
+    }).done(function (response) {
+
+      if (response) {
+        sessionStorage.setItem("HasSetSessionBrowserTimeZone", true);
+        localStorage.setItem("BrowserTimeZone", timeZone);
+      }
+      else {
+        console.error("Timezone not set");
+      }
+    });
+  }
+}
+
+
+// MAIN 
+setBrowserTimeZone();
+
+
